@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DrawerService } from '../../services/drawer.service';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,13 @@ export class HeaderComponent implements OnInit {
   @Input() theme: string = '';
   @Input() icon: string = '';
 
-  constructor() { }
+  constructor(private drawerService: DrawerService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleSidenav(): void {
+    this.drawerService.toggleDrawer();
   }
 
 }
