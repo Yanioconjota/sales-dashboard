@@ -174,10 +174,6 @@
 
   //Fontface
   //Font names
-$font:'Lato-Regular';
-$font-bold:'Lato-Bold';
-$font-italic: 'Lato-Italic';
-
 
   @each $font-face in $font, $font-bold, $font-italic  {
     @font-face {
@@ -187,18 +183,6 @@ $font-italic: 'Lato-Italic';
            url('../fonts/#{$font-face}.woff') format('woff'),
            url('../fonts/#{$font-face}.ttf')  format('truetype'),
            url('../fonts/#{$font-face}.svg##{$font}') format('svg');
-    }
-  }
-
-
-  @each $type in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6', '[class^="mat-headline-"]') {
-    .mat-#{$type},
-    .mat-typography .mat-#{$type},
-    .mat-typography #{$type} {
-      font-family: $font-bold;
-      font-weight: 800;
-      line-height: 2.3rem;
-      letter-spacing: 0.3px;
     }
   }
 
