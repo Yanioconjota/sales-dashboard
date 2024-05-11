@@ -1,0 +1,25 @@
+html, body { height: 100vh; }
+
+html { touch-action: none; }
+
+body {
+    margin: 0;
+    color: var(--bs-body-color);
+    background-color: var(--background-color);
+    font-family: var(--bs-body-font-family);
+}
+
+:root {
+    --primary-button-color: $primary;
+    --primary-color: $primary;
+    --primary-bg-color: $primary;
+    --secondary-button-color: $secondary;
+    --secondary-color: $secondary;
+    --secondary-bg-color: $secondary;
+    --bs-body-font-family: $font;
+    --bs-body-color: $body-text-color;
+    --mdc-typography-font-family: $font;
+    --mdc-protected-button-container-color: $primary;
+    --default-bg-color: $lt-cyan;
+    --background-color: $primary
+}

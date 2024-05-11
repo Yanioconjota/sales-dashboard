@@ -1,0 +1,86 @@
+@import './mixins';
+
+.form {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    .custom-form {
+        width: var(--custom-form-width);
+        /* Form starting stylings ------------------------------- */
+        .custom-form-group {
+            position: relative;
+            margin-top: 5rem;
+
+            input {
+                font-size: 18px;
+                padding: 10px 10px 10px 5px;
+                display: block;
+                width: 100%;
+                border: 1px solid var(--primary-button-color);
+                background-color: $lt-cyan;
+                transition: border-width 0.2s ease, border-color 0.2s ease;
+                box-shadow: none;
+                @include border-radius(4px);
+
+                &:focus,
+                &.input-not-empty {
+                    outline: none;
+                    border-width: 2px;
+                    border-color: var(--primary-button-color);
+
+                    ~label {
+                        top: -2rem;
+                        font-size: 2rem;
+                        color: $body-text-color;
+                    }
+
+                    ~.bar:before,
+                    ~.bar:after {
+                        width: 49.9%;
+                    }
+
+                    ~.highlight {
+                        animation: inputHighlighter 0.3s ease;
+                    }
+                }
+            }
+
+            /* Label ======================================= */
+            label {
+                color: var(--primary-button-color);
+                font-family: $font-bold;
+                font-size: 18px;
+                font-weight: normal;
+                position: absolute;
+                pointer-events: none;
+                left: 5px;
+                top: 10px;
+                transition: 0.2s ease all;
+            }
+
+            /* Highlighter ================================== */
+            .highlight {
+                position: absolute;
+                height: 60%;
+                width: 100px;
+                top: 25%;
+                left: 0;
+                pointer-events: none;
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+/* Animations ================ */
+@keyframes inputHighlighter {
+    from {
+        background: $lt-cyan;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
