@@ -18,3 +18,12 @@ $chevron-right: 'chevron_right';
 $chevron-up: 'expand_less';
 $chevron-down: 'expand_more';
 
+$header-height: 7vh;
+$sidenav-height: 93vh;
+
+:root {
+  --sidenav-height: 93vh;
+  --header-height: 7vh;
+  --default-spacing: .5rem;
+  --spacing-1: 1rem;
+}

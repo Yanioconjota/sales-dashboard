@@ -1,0 +1,13 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.custom-toolbar {
+  height: var(--header-height);
+  .brand {
+    @include flexbox();
+    @include align-items(center);
+    mat-icon {
+      margin-right: var(--default-spacing);
+    }
+  }
+}

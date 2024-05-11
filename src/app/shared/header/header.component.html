@@ -1,4 +1,7 @@
-<mat-toolbar [color]="theme">
-  <mat-icon>{{ icon }}</mat-icon>
-  <span>{{ title }}</span>
+<mat-toolbar [color]="theme" class="custom-toolbar">
+  <button mat-icon-button aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="brand"><mat-icon>{{ icon }}</mat-icon> {{ title }}</div>
 </mat-toolbar>

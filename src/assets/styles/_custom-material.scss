@@ -72,8 +72,29 @@ $sales-dashboard-warn: mat.define-palette(mat.$red-palette);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 
+//These are the arguments passed to the mat.define-typography-level function. The first argument is the font size, the second argument is the line height, and the third argument is the font weight. In this case, the font size and line height are both set to 112px, and the font weight is set to 300, which corresponds to a "light" font weight. The $letter-spacing argument is optional and is set to -0.05em.
+
+/*
+$font-family:   'Roboto, "Helvetica Neue", sans-serif',
+51 │ │   $display-4:     define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+52 │ │   $display-3:     define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+53 │ │   $display-2:     define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+54 │ │   $display-1:     define-typography-level(34px, 40px, 400),
+55 │ │   $headline:      define-typography-level(24px, 32px, 400),
+56 │ │   $title:         define-typography-level(20px, 32px, 500),
+57 │ │   $subheading-2:  define-typography-level(16px, 28px, 400),
+58 │ │   $subheading-1:  define-typography-level(15px, 24px, 400),
+59 │ │   $body-2:        define-typography-level(14px, 24px, 500),
+60 │ │   $body-1:        define-typography-level(14px, 20px, 400),
+61 │ │   $caption:       define-typography-level(12px, 20px, 400),
+62 │ │   $button:        define-typography-level(14px, 14px, 500),
+63 │ │   // Line-height must be unit-less fraction of the font-size.
+64 │ │   $input:         define-typography-level(inherit, 1.125, 400)
+*/
+
 $sales-dashboard-typography: mat.define-typography-config(
   $font-family: $font,
+  $headline: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
 );
 
 $sales-dashboard-theme: mat.define-light-theme((
