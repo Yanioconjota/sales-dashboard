@@ -9,7 +9,6 @@ import { DrawerService } from '../../services/drawer.service';
 })
 export class SidenavComponent implements OnInit, AfterViewInit {
   @ViewChild('drawer') drawer!: MatDrawer;
-  showFiller = false;
 
   constructor(private drawerService: DrawerService) { }
 
