@@ -3,19 +3,8 @@ html, body { height: 100vh; }
 html { touch-action: none; }
 
 body {
-    margin: 0;
-    color: var(--bs-body-color);
-    background-color: var(--background-color);
-    font-family: var(--bs-body-font-family);
-}
-
-.main-wrapper {
-  height: var(--body-height);
-  > * {
-    height: inherit;
-    display: block;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
+  margin: 0;
+  color: var(--bs-body-color);
+  background-color: var(--background-color);
+  font-family: var(--bs-body-font-family);
 }

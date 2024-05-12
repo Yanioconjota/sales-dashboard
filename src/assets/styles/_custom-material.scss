@@ -93,8 +93,7 @@ $font-family:   'Roboto, "Helvetica Neue", sans-serif',
 */
 
 $sales-dashboard-typography: mat.define-typography-config(
-  $font-family: $font,
-  $headline: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $font-family: $font
 );
 
 $sales-dashboard-theme: mat.define-light-theme((

@@ -4,10 +4,10 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
   background-color: transparent;
   position: absolute;
-  z-index: 2;
 }
 
 .example-sidenav-content {
+  background-color: red;
   display: flex;
   height: 100%;
   align-items: center;
@@ -17,3 +17,13 @@
 .example-sidenav {
   padding: 20px;
 }
+
+.mat-drawer-container.mat-drawer-container-explicit-backdrop .mat-drawer-side {
+  z-index: 15;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  z-index: 14;
+}
+
+
