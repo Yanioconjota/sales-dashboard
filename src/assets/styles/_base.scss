@@ -8,3 +8,10 @@ body {
   background-color: var(--background-color);
   font-family: var(--bs-body-font-family);
 }
+
+.card-wrapper {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  height: 100%;
+}

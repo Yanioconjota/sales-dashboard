@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { DrawerService } from '../../services/drawer.service';
 import { Unsubscribable } from 'rxjs';
 import { CombineSubscriptions, DestroySubscribers } from '../../decorators/destroy-subscribers.decorator';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,7 +16,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   @CombineSubscriptions() subscriber?: Unsubscribable;
   sidenavStatusOpen = false;
 
-  constructor(private drawerService: DrawerService) { }
+  constructor(
+    private readonly drawerService: DrawerService,
+    private readonly navigationService: NavigationService) { }
 
   ngOnInit(): void {
     this.subscriber = this.drawerService.getDrawerStatus().subscribe(open => {
@@ -25,6 +28,10 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.drawerService.setDrawer(this.drawer);
+  }
+
+  navigateTo(route: string): void {
+    this.navigationService.navigateTo(route);
   }
 
 }
