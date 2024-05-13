@@ -25,9 +25,9 @@ import { AuthModule } from '@auth0/auth0-angular';
     MatInputModule,
     MatProgressBarModule,
     AuthModule.forRoot({
-      domain: 'AUTH0_ISSUER_BASE_URL',
-      clientId: 'AUTH0_CLIENT_ID',
-      redirectUri: window.location.origin
+      domain: '--YOUR-DOMAIN',
+      clientId: '--YOUR-CLIENT',
+      redirectUri: `${window.location.origin}/callback`
     }),
   ],
   exports: [
