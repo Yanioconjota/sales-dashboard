@@ -4,7 +4,8 @@
   </button>
 
   <div class="brand">
-    <button mat-button (click)="navigateTo('login')"><mat-icon>{{ icon }}</mat-icon></button>
+    <button mat-button (click)="navigateTo('/')"><mat-icon>{{ icon }}</mat-icon></button>
      {{ title }}
   </div>
+  <button mat-button (click)="loginWithRedirect()">LOGIN</button>
 </mat-toolbar>

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 @NgModule({
@@ -22,7 +23,12 @@ import { RegisterComponent } from './components/register/register.component';
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    AuthModule.forRoot({
+      domain: 'AUTH0_ISSUER_BASE_URL',
+      clientId: 'AUTH0_CLIENT_ID',
+      redirectUri: window.location.origin
+    }),
   ],
   exports: [
     LoginComponent,

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DrawerService } from '../../services/drawer.service';
 import { NavigationService } from '../../services/navigation.service';
+import { AuthService } from 'src/app/modules/authorization/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private drawerService: DrawerService,
-    private readonly navigationService: NavigationService) { }
+    private readonly navigationService: NavigationService, private readonly auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,10 @@ export class HeaderComponent implements OnInit {
 
   navigateTo(route: string): void {
     this.navigationService.navigateTo(route);
+  }
+
+  loginWithRedirect(): void {
+    this.auth.loginWithRedirect();
   }
 
 }
