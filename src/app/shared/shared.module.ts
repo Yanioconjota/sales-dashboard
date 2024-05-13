@@ -9,10 +9,12 @@ import { MatListModule } from '@angular/material/list';
 //Components
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   ],
   exports: [
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    CarouselComponent
   ]
 })
 export class SharedModule { }
