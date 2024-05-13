@@ -25,8 +25,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     MatInputModule,
     MatProgressBarModule,
     AuthModule.forRoot({
-      domain: '--YOUR-DOMAIN',
-      clientId: '--YOUR-CLIENT',
+      domain:  process.env.AUTH0_ISSUER_BASE_URL || '',
+      clientId: process.env.AUTH0_CLIENT_ID || '',
       redirectUri: `${window.location.origin}/callback`
     }),
   ],
@@ -35,4 +35,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     RegisterComponent
   ]
 })
-export class AuthorizationModule { }
+export class AuthorizationModule {
+  constructor() {
+    console.log(process.env.AUTH0_ISSUER_BASE_URL, process.env.AUTH0_CLIENT_ID);
+  }
+}
