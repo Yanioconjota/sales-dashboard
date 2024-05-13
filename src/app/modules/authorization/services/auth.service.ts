@@ -26,6 +26,10 @@ export class AuthService {
     this.auth.loginWithRedirect();
   }
 
+  logout(): void {
+    this.auth.logout({ returnTo: window.location.origin });
+  }
+
   isAuthenticated(): Observable<boolean> {
     return this.auth.isAuthenticated$;
   }

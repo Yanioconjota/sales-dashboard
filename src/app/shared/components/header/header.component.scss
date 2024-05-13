@@ -1,13 +1,25 @@
 @import 'src/assets/styles/variables';
 @import 'src/assets/styles/mixins';
 
+.flexbox-center {
+  @include flexbox();
+  @include align-items(center);
+}
+
 .custom-toolbar {
+  button {
+    text-transform: uppercase;
+  }
   height: var(--header-height);
-  .brand {
-    @include flexbox();
-    @include align-items(center);
-    mat-icon {
-      margin-right: var(--default-spacing);
+  .sidenav-wrapper {
+    width: 100%;
+    @extend .flexbox-center;
+    @include justify-content(space-between);
+    .brand {
+      @extend .flexbox-center;
+      mat-icon {
+        margin-right: var(--default-spacing);
+      }
     }
   }
 }

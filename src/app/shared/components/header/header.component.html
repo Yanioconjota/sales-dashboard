@@ -3,9 +3,12 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <div class="brand">
-    <button mat-button (click)="navigateTo('/')"><mat-icon>{{ icon }}</mat-icon></button>
-     {{ title }}
+  <div class="sidenav-wrapper">
+    <div class="brand">
+      <button mat-button (click)="navigateTo('/')"><mat-icon>{{ icon }}</mat-icon></button>
+       {{ title }}
+    </div>
+    <button *ngIf="isAuthenticated" mat-button (click)="logout()">logout</button>
+    <button *ngIf="!isAuthenticated" mat-button (click)="loginWithRedirect()">login</button>
   </div>
-  <button mat-button (click)="loginWithRedirect()">LOGIN</button>
 </mat-toolbar>

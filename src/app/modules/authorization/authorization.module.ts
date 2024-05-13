@@ -35,8 +35,4 @@ import { AuthModule } from '@auth0/auth0-angular';
     RegisterComponent
   ]
 })
-export class AuthorizationModule {
-  constructor() {
-    console.log(process.env.AUTH0_ISSUER_BASE_URL, process.env.AUTH0_CLIENT_ID);
-  }
-}
+export class AuthorizationModule { }
