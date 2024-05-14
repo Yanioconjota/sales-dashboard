@@ -1,1 +1,9 @@
-<p>carousel works!</p>
+<div class="carousel-container" [style.height]="height">
+  <div class="carousel-slide" *ngFor="let image of images; let i = index"
+       [style.display]="i === currentSlideIndex ? 'block' : 'none'">
+    <img [src]="image.picture" [alt]="image.text" [style.animation]="'fade ' + animationTime + 'ms'">
+    <div class="carousel-text">{{ image.text }}</div>
+  </div>
+  <button (click)="previousSlide()">Prev</button>
+  <button (click)="nextSlide()">Next</button>
+</div>

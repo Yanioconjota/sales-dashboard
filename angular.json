@@ -36,9 +36,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/fullpage.js/dist/fullpage.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
