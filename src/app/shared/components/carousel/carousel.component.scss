@@ -1,5 +1,5 @@
 .carousel-container {
-  width: 100vw;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -33,7 +33,7 @@ img {
 }
 
 button {
-  position: absolute;
+  //position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;

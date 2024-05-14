@@ -4,6 +4,8 @@
     <img [src]="image.picture" [alt]="image.text" [style.animation]="'fade ' + animationTime + 'ms'">
     <div class="carousel-text">{{ image.text }}</div>
   </div>
-  <button (click)="previousSlide()">Prev</button>
-  <button (click)="nextSlide()">Next</button>
+
 </div>
+<button (click)="previousSlide()">Prev</button>
+<button (click)="autoplay ? stopAutoplay() : startAutoplay()">{{ autoplay ? 'Stop Autoplay' : 'Start Autoplay' }}</button>
+<button (click)="nextSlide()">Next</button>

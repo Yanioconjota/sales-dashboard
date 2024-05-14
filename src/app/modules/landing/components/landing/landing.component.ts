@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarouselItem } from 'src/app/shared/models/carousel-item.model';
 
 @Component({
   selector: 'app-landing',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  url = '../../../../../assets/img/slides/';
+  url = 'assets/img/slides/';
 
-  images = [
-    { picture: `${this.url}cp001.png`, text: 'Texto imagen 1' },
+  images: CarouselItem[] = [
+    { picture: `${this.url}cp001.png` },
     { picture: `${this.url}cp002.png`, text: 'Texto imagen 2' },
     { picture: `${this.url}cp003.png`, text: 'Texto imagen 3' },
     { picture: `${this.url}cp004.png`, text: 'Texto imagen 4' },
