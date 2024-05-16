@@ -12,6 +12,13 @@ export class LandingComponent implements OnInit {
   animationTime = 1000;
   selectedImageAlignment = 'center';
   selectedSize = 'cover';
+  showControls = true;
+  showArrows = true;
+  selectedAlignment = 'center';
+  selectedPosition = 'bottom';
+  backgroundColor = '#414141';
+  selectedTheme = 'default';
+  height = '500';
 
   images: CarouselItem[] = [
     { picture: `${this.url}cp001.png` },

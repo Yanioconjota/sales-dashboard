@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,7 +22,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 const imports = [
   CommonModule,
   RouterModule,
+  FormsModule,
   MatFormFieldModule,
+  MatInputModule,
   MatIconModule,
   MatToolbarModule,
   MatSidenavModule,

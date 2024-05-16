@@ -3,7 +3,7 @@
        [style.display]="i === currentSlideIndex ? 'block' : 'none'" [style.backgroundColor]="backgroundColor">
     <img [ngClass]="[imageAlignment, imageSize]" [src]="image.picture" [alt]="image.text" [style.animation]="'fade ' + animationTime + 'ms'">
   </div>
-  <div class="carousel-actions" [ngClass]="[positionClass, alignmentClass]">
+  <div class="carousel-actions" *ngIf="showControls" [ngClass]="[positionClass, alignmentClass]">
     <mat-button-toggle-group [ngClass]="[color]">
       <mat-button-toggle *ngIf="showArrows" (click)="previousSlide()">
         <mat-icon>arrow_backward</mat-icon>

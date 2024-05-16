@@ -2,39 +2,104 @@
   <div class="col-6">
     <app-carousel [images]="images"
                   [animationTime]="animationTime"
-                  [height]="'500'"
-                  [alignment]="'left'"
-                  [position]="'bottom'"
-                  [color]="'primary'"
+                  [height]="height"
+                  [showControls]="showControls"
+                  [showArrows]="showArrows"
+                  [alignment]="selectedAlignment"
+                  [position]="selectedPosition"
+                  [color]="selectedTheme"
                   [imageAlignment]="selectedImageAlignment"
                   [imageSize]="selectedSize"
-                  [backgroundColor]="'black'"></app-carousel>
+                  [backgroundColor]="backgroundColor"></app-carousel>
   </div>
 
-  <div class="col-6 padding-1">
-    <mat-form-field appearance="fill">
-      <mat-label>Animation Time</mat-label>
-      <mat-select [(value)]="animationTime">
-        <mat-option *ngFor="let time of [500, 1000, 1500, 5000]" [value]="time">
-          {{ time }} ms
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Image Size</mat-label>
-      <mat-select [(value)]="selectedSize">
-        <mat-option *ngFor="let size of ['cover', 'contain']" [value]="size">
-          {{ size }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" *ngIf="selectedSize === 'cover'">
-      <mat-label>Alignment</mat-label>
-      <mat-select [(value)]="selectedImageAlignment">
-        <mat-option *ngFor="let alignment of ['left', 'center', 'right']" [value]="alignment">
-          {{ alignment }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div class="col-6">
+    <div class="main-wrapper">
+      <!-- Controls Configuration -->
+      <div class="col-6 padding-1">
+        <h3>Controls Configuration</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Selected Theme</mat-label>
+          <mat-select [(value)]="selectedTheme">
+            <mat-option *ngFor="let themeColor of ['default', 'primary', 'secondary', 'dark']" [value]="themeColor">
+              {{ themeColor }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Show Controls</mat-label>
+          <mat-select [(value)]="showControls">
+            <mat-option *ngFor="let option of [true, false]" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <ng-container *ngIf="showControls">
+          <mat-form-field appearance="fill">
+            <mat-label>Show Arrows</mat-label>
+            <mat-select [(value)]="showArrows">
+              <mat-option *ngFor="let option of [true, false]" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Selected Alignment</mat-label>
+            <mat-select [(value)]="selectedAlignment">
+              <mat-option *ngFor="let alignment of ['left', 'center', 'right']" [value]="alignment">
+                {{ alignment }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Selected Position</mat-label>
+            <mat-select [(value)]="selectedPosition">
+              <mat-option *ngFor="let position of ['top', 'bottom']" [value]="position">
+                {{ position }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <!-- //Controls Configuration -->
+
+      <!-- Carousel Configuration -->
+      <div class="col-6 padding-1">
+        <h3>Carousel Configuration</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Animation Time</mat-label>
+          <mat-select [(value)]="animationTime">
+            <mat-option *ngFor="let time of [500, 1000, 1500, 5000]" [value]="time">
+              {{ time }} ms
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Height (px)</mat-label>
+          <input matInput [(ngModel)]="height">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Image Size</mat-label>
+          <mat-select [(value)]="selectedSize">
+            <mat-option *ngFor="let size of ['cover', 'contain']" [value]="size">
+              {{ size }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="selectedSize === 'cover'">
+          <mat-label>Alignment</mat-label>
+          <mat-select [(value)]="selectedImageAlignment">
+            <mat-option *ngFor="let alignment of ['left', 'center', 'right']" [value]="alignment">
+              {{ alignment }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="selectedSize !== 'cover'">
+          <mat-label>Background Color</mat-label>
+          <input matInput placeholder="#414141" [(ngModel)]="backgroundColor">
+        </mat-form-field>
+      </div>
+      <!-- //Carousel Configuration -->
+    </div>
   </div>
 </div>

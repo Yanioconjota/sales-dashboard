@@ -13,7 +13,7 @@ export class CarouselComponent implements OnInit {
   @Input() autoplay: boolean = true;
   @Input() autoPlayTime: number = 1000;
   @Input() showArrows?: boolean = true;
-
+  @Input() showControls?: boolean = true;
   @Input() position?: string = 'bottom';
   @Input() alignment?: string = 'center';
   @Input() color?: string = 'default';
