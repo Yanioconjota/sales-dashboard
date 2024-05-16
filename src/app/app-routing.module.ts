@@ -5,13 +5,15 @@ import { LoginComponent } from './modules/authorization/components/login/login.c
 import { RegisterComponent } from './modules/authorization/components/register/register.component';
 import { DemoComponent } from './modules/sales/components/demo/demo.component';
 import { CallbackComponent } from './modules/authorization/components/callback/callback.component';
+import { LandingComponent } from './modules/landing/components/landing/landing.component';
 
 const routes: Routes = [
+  { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'sales' ,component: DemoComponent, canActivate: [AuthGuard]},
   { path: 'callback', component: CallbackComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: 'sales' ,component: DemoComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

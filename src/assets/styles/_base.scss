@@ -9,9 +9,23 @@ body {
   font-family: var(--bs-body-font-family);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .card-wrapper {
   @include flexbox();
   @include justify-content(center);
   @include align-items(center);
   height: 100%;
+}
+
+.main-wrapper {
+  @include flexbox();
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.padding-1 {
+  padding: var(--default-spacing);
 }

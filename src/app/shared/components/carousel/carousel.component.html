@@ -1,0 +1,19 @@
+<div class="carousel-container" [style.height]="height + 'px'">
+  <div class="carousel-slide" *ngFor="let image of images; let i = index"
+       [style.display]="i === currentSlideIndex ? 'block' : 'none'" [style.backgroundColor]="backgroundColor">
+    <img [ngClass]="[imageAlignment, imageSize]" [src]="image.picture" [alt]="image.text" [style.animation]="'fade ' + animationTime + 'ms'">
+  </div>
+  <div class="carousel-actions" *ngIf="showControls" [ngClass]="[positionClass, alignmentClass]">
+    <mat-button-toggle-group [ngClass]="[color]">
+      <mat-button-toggle *ngIf="showArrows" (click)="previousSlide()">
+        <mat-icon>arrow_backward</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle (click)="autoplay ? stopAutoplay() : startAutoplay()">
+        <mat-icon>{{ !autoplay ? 'play_circle' : 'stop_circle' }}</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle *ngIf="showArrows" (click)="nextSlide()">
+        <mat-icon>arrow_forward</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
