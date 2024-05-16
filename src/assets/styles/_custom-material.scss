@@ -63,6 +63,31 @@ $sales-dashboard-accent: mat.define-palette(((
     900 : $white,
   )
 )));
+
+$sales-dashboard-dark: mat.define-palette(((
+  50 : lighten($dark, 50%),
+  100 : lighten($dark, 40%),
+  200 : lighten($dark, 20%),
+  300 : lighten($dark, 20%),
+  400 : lighten($dark, 10%),
+  500 : $dark,  // dark Color
+  600 : darken($dark, 10%),
+  700 : darken($dark, 20%),
+  800 : darken($dark, 30%),
+  900 : darken($dark, 40%),
+  contrast: (
+    50 : $black,
+    100 : $black,
+    200 : $black,
+    300 : $black,
+    400 : $white,
+    500 : $white,
+    600 : $white,
+    700 : $white,
+    800 : $white,
+    900 : $white,
+  )
+)));
 //$sales-dashboard-primary: mat.define-palette(mat.$indigo-palette);
 //$sales-dashboard-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
@@ -108,4 +133,53 @@ $sales-dashboard-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
+// Define custom mixin to adjust `mat-button-toggle` styles based on the theme
+@mixin mix-app-theme($theme) {
+  $primary: mat.get-color-from-palette($sales-dashboard-primary, 500);
+  $accent: mat.get-color-from-palette($sales-dashboard-accent, 500);
+
+  .mat-button-toggle-group {
+    &.primary {
+      .mat-button-toggle-appearance-standard {
+        background-color: mat.get-color-from-palette($sales-dashboard-primary, 500) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-primary, 500) !important;
+      }
+
+      .mat-button-toggle-checked {
+        background-color: mat.get-color-from-palette($sales-dashboard-primary, 600) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-primary, 600) !important
+      }
+    }
+    &.secondary {
+      .mat-button-toggle-appearance-standard {
+        background-color: mat.get-color-from-palette($sales-dashboard-accent, 500) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-accent, 500) !important;
+      }
+
+      .mat-button-toggle-checked {
+        background-color: mat.get-color-from-palette($sales-dashboard-accent, 600) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-accent, 600) !important
+      }
+    }
+    &.dark {
+      .mat-button-toggle-appearance-standard {
+        background-color: mat.get-color-from-palette($sales-dashboard-dark, 500) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-dark, 500) !important;
+      }
+
+      .mat-button-toggle-checked {
+        background-color: mat.get-color-from-palette($sales-dashboard-dark, 600) !important;
+        color: mat.get-contrast-color-from-palette($sales-dashboard-dark, 600) !important
+      }
+    }
+  }
+
+}
+
+// Include your custom mixin using the defined theme
+@include mix-app-theme($sales-dashboard-theme);
+
+// Apply all component themes
 @include mat.all-component-themes($sales-dashboard-theme);
+

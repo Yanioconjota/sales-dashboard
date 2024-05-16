@@ -8,11 +8,29 @@ import { CarouselItem } from '../../models/carousel-item.model';
 })
 export class CarouselComponent implements OnInit {
   @Input() images: CarouselItem[] = [];
-  @Input() animationTime: number = 500; // tiempo en milisegundos
-  @Input() height: string = 'auto';
-  @Input() autoplay: boolean = false;
+  @Input() animationTime: number = 500;
+  @Input() height: string = '500';
+  @Input() autoplay: boolean = true;
+  @Input() autoPlayTime: number = 1000;
+  @Input() showArrows?: boolean = true;
+
+  @Input() position?: string = 'bottom';
+  @Input() alignment?: string = 'center';
+  @Input() color?: string = 'default';
+  @Input() imageAlignment?: string = 'center';
+  @Input() imageSize?: string = 'cover';
+  @Input() backgroundColor?: string = 'transparent';
+
   currentSlideIndex: number = 0;
   autoplayInterval?: any;
+
+  get positionClass(): string {
+    return `position-${this.position}`;
+  }
+
+  get alignmentClass(): string {
+    return `align-${this.alignment}`;
+  }
 
   constructor() { }
 
