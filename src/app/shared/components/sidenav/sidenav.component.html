@@ -2,8 +2,8 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-list>
       <mat-list-item><button mat-button (click)="navigateTo('/')">HOME</button></mat-list-item>
-      <mat-list-item *ngIf="isAuthenticated$ | async"><button mat-button (click)="navigateTo('user')">MY PROFILE</button></mat-list-item>
-      <mat-list-item><button mat-button (click)="navigateTo('sales')">SALES</button></mat-list-item>
+      <mat-list-item><button mat-button (click)="navigateTo('user')">MY PROFILE</button></mat-list-item>
+      <mat-list-item *ngIf="isAuthenticated$ | async"><button mat-button (click)="navigateTo('sales')">SALES</button></mat-list-item>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>

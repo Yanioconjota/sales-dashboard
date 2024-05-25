@@ -12,32 +12,34 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { UserComponent } from './components/user/user.component';
+import { AuthorizationRoutingModule } from './authorization-routing.module';
 
+const imports = [
+  CommonModule,
+  AuthorizationRoutingModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressBarModule,
+  AuthModule.forRoot({
+    domain:  process.env.AUTH0_ISSUER_BASE_URL || '',
+    clientId: process.env.AUTH0_CLIENT_ID || '',
+    redirectUri: `${window.location.origin}/callback`
+  }),
+  EffectsModule.forFeature([AuthEffects])
+];
+
+const components = [
+  LoginComponent,
+  RegisterComponent,
+  UserComponent
+];
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    UserComponent
-  ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressBarModule,
-    AuthModule.forRoot({
-      domain:  process.env.AUTH0_ISSUER_BASE_URL || '',
-      clientId: process.env.AUTH0_CLIENT_ID || '',
-      redirectUri: `${window.location.origin}/callback`
-    }),
-    EffectsModule.forFeature([AuthEffects])
-  ],
-  exports: [
-    LoginComponent,
-    RegisterComponent
-  ]
+  declarations: [...components],
+  imports: [...imports],
+  exports: [...components]
 })
 export class AuthorizationModule { }
