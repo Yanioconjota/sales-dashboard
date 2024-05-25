@@ -11,12 +11,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
