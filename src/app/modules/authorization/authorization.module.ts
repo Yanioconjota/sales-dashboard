@@ -9,6 +9,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/auth.effects';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       clientId: process.env.AUTH0_CLIENT_ID || '',
       redirectUri: `${window.location.origin}/callback`
     }),
+    EffectsModule.forFeature([AuthEffects])
   ],
   exports: [
     LoginComponent,

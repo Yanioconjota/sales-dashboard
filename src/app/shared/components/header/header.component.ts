@@ -7,6 +7,7 @@ import { Unsubscribable, combineLatest } from 'rxjs';
 import { User } from '@auth0/auth0-angular';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers/index.reducer';
+import * as AuthActions from 'src/app/modules/authorization/store/actions/auth.actions';
 import * as AuthSelectors from 'src/app/modules/authorization/store/selectors/auth.selectors';
 
 @Component({
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit {
     private readonly store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(AuthActions.checkAuthentication());
+    this.store.dispatch(AuthActions.loadUserData());
     this.setupSubscription();
   }
 
@@ -50,13 +53,12 @@ export class HeaderComponent implements OnInit {
   }
 
   setupSubscription(): void {
-    // this.subscriber = this.auth.isAuthenticated().subscribe(isAuthenticated => {
-    //   this.isAuthenticated = isAuthenticated;
-    // });
+    this.subscriber = this.auth.isAuthenticated().subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
+    });
 
     this.subscriber = combineLatest([this.store.select(AuthSelectors.selectIsAuthenticated), this.store.select(AuthSelectors.selectUserData)]).subscribe(([isAuthenticated, user]) => {
-      this.isAuthenticated = isAuthenticated;
-      this.user = user;
+      console.log(isAuthenticated, user);
     });
   }
 
