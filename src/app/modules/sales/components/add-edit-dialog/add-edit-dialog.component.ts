@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PersonDto } from '../../models/person.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,14 +14,19 @@ export class AddEditDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: PersonDto | null | undefined
+    @Inject(MAT_DIALOG_DATA) public data: PersonDto
   ) {
     this.form = this.fb.group({
-      title: [data?.title, Validators.required],
-      firstName: [data?.firstName, Validators.required],
-      lastName: [data?.lastName, Validators.required],
-      personType: [data?.personType, Validators.required]
+      title: [this.data.title || ''],
+      firstName: [this.data.firstName || '', Validators.required],
+      middleName: [this.data.middleName || ''],
+      lastName: [this.data.lastName || '', Validators.required],
+      personType: [this.data.personType || ''],
+      suffix: [this.data.suffix || ''],
+      nameStyle: [this.data.nameStyle || false],
+      emailPromotion: [this.data.emailPromotion || 0]
     });
+
   }
 
   ngOnInit(): void {

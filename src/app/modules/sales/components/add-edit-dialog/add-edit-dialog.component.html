@@ -1,26 +1,65 @@
-<!-- add-edit-dialog.component.html -->
-<h1 mat-dialog-title>Edit Person</h1>
-<div mat-dialog-content>
-  <form [formGroup]="form">
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastName">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Person Type</mat-label>
-      <input matInput formControlName="personType">
-    </mat-form-field>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="onSave()">Save</button>
-</div>
+<ng-container *ngIf="data">
+  <!-- add-edit-dialog.component.html -->
+  <h1 mat-dialog-title>Edit {{data.firstName}} {{data.lastName}}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option value="Mr">Mr</mat-option>
+          <mat-option value="Mrs">Mrs</mat-option>
+          <mat-option value="Ms">Ms</mat-option>
+          <mat-option value="Miss">Miss</mat-option>
+          <mat-option value="Dr"></mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Middle Name</mat-label>
+        <input matInput formControlName="middleName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Person Type</mat-label>
+        <mat-select formControlName="personType">
+          <mat-option value="IN">IN</mat-option>
+          <mat-option value="EM">EM</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Suffix</mat-label>
+        <mat-select formControlName="suffix">
+          <mat-option value="Jr">Jr</mat-option>
+          <mat-option value="Sr">Sr</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>Name Style</p>
+      <mat-button-toggle-group formControlName="nameStyle" aria-label="Name Style">
+        <mat-button-toggle value="true">Yes</mat-button-toggle>
+        <mat-button-toggle value="false">No</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <p>Email Promotion</p>
+      <mat-button-toggle-group formControlName="emailPromotion" aria-label="Email Promotion">
+        <mat-button-toggle value="1">Opt In</mat-button-toggle>
+        <mat-button-toggle value="0">Opt Out</mat-button-toggle>
+      </mat-button-toggle-group>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSave()">Save</button>
+  </div>
+</ng-container>

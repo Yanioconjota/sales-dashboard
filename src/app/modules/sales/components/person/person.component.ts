@@ -24,8 +24,8 @@ export class PersonComponent implements OnInit {
   editPerson(): void {
     console.log('Edit button clicked');
     const dialogRef = this.dialog.open(AddEditDialogComponent, {
-      width: '250px',
-      data: { person: this.person}
+      width: '600px',
+      data: this.person
     });
 
     dialogRef.afterClosed().subscribe(result => {
