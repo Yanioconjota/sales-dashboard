@@ -8,10 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { PeopleEffects } from './store/effects';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddEditDialogComponent } from './components/add-edit-dialog/add-edit-dialog.component';
 
 const imports = [
   CommonModule,
   SharedModule,
+  ReactiveFormsModule,
   HttpClientModule,
   SalesRoutingModule,
   EffectsModule.forFeature([PeopleEffects])
@@ -20,7 +23,8 @@ const imports = [
 const components = [
   SalesComponent,
   PeopleComponent,
-  PersonComponent
+  PersonComponent,
+  AddEditDialogComponent
 ];
 
 @NgModule({

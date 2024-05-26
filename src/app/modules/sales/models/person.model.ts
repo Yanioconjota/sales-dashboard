@@ -1,3 +1,8 @@
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 export interface IPersonDto {
   businessEntityId: number;
   personType?: string;

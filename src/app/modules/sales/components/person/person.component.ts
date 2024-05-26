@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PersonDto } from '../../models/person.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEditDialogComponent } from '../add-edit-dialog/add-edit-dialog.component';
 
 @Component({
   selector: 'app-person',
@@ -10,7 +12,7 @@ export class PersonComponent implements OnInit {
 
   @Input() person: PersonDto | null | undefined;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +23,14 @@ export class PersonComponent implements OnInit {
 
   editPerson(): void {
     console.log('Edit button clicked');
+    const dialogRef = this.dialog.open(AddEditDialogComponent, {
+      width: '250px',
+      data: { person: this.person}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
   }
 
 }
