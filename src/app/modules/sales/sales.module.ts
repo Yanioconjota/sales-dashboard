@@ -4,9 +4,11 @@ import { SalesComponent } from './components/sales/sales.component';
 import { SalesRoutingModule } from './sales-routing.module';
 import { PersonComponent } from './components/person/person.component';
 import { PeopleComponent } from './components/people/people.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const imports = [
   CommonModule,
+  HttpClientModule,
   SalesRoutingModule
 ];
 
