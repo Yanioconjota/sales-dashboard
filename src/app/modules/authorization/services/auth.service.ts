@@ -15,7 +15,7 @@ export class AuthService {
     public auth: Auth0Service,
     private readonly router: Router,
     private readonly store: Store<AppState>) {
-    this.setupBeforeUnloadListener();
+    //this.setupBeforeUnloadListener();
   }
 
   handleCallback(): void {
