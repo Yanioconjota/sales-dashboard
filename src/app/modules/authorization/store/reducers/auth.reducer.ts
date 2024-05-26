@@ -22,5 +22,12 @@ export const authReducer = createReducer(
   on(AuthActions.setError, (state, { error }) => ({
     ...state,
     error: error
-  }))
+  })),
+
+  // Resets the Auth state when the user logs out
+  on(AuthActions.logout, (state) => ({
+    ...state,
+    isAuthenticated: false,
+    user: null
+  })),
 );

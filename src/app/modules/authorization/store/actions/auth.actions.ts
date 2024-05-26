@@ -7,3 +7,4 @@ export const setUserData = createAction(`${AUTH_ACTION_SOURCE} Set User Data`, p
 export const setError = createAction(`${AUTH_ACTION_SOURCE} Set Error`, props<{ error: string }>());
 export const checkAuthentication = createAction(`${AUTH_ACTION_SOURCE} Check Authentication`);
 export const setAuthenticated = createAction(`${AUTH_ACTION_SOURCE} Set Authenticated`, props<{ isAuthenticated: boolean }>());
+export const logout = createAction(`${AUTH_ACTION_SOURCE} Logout`);
