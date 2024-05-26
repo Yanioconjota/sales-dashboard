@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { initialAuthState } from "../auth.state";
 import * as AuthActions from "../actions/auth.actions";
 
-export const authReducer = createReducer(
+export const AuthReducer = createReducer(
   initialAuthState,
   // Sets the authentication status
   on(AuthActions.setAuthenticated, (state, { isAuthenticated }) => ({

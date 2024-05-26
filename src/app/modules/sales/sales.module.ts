@@ -5,11 +5,14 @@ import { SalesRoutingModule } from './sales-routing.module';
 import { PersonComponent } from './components/person/person.component';
 import { PeopleComponent } from './components/people/people.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { PeopleEffects } from './store/effects';
 
 const imports = [
   CommonModule,
   HttpClientModule,
-  SalesRoutingModule
+  SalesRoutingModule,
+  EffectsModule.forFeature([PeopleEffects])
 ];
 
 const components = [
