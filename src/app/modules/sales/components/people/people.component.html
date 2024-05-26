@@ -1,1 +1,5 @@
-<app-person *ngFor="let person of people" [person]="person"></app-person>
+<div class="row">
+  <div class="col-md-6 col-12 padding-1" *ngFor="let person of people">
+    <app-person [person]="person"></app-person>
+  </div>
+</div>

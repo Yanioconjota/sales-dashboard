@@ -1,6 +1,5 @@
-<div class="main-wrapper" *ngIf="person">
-  <div class="col-12 padding-1">
-    <app-detail-card
+<ng-container *ngIf="person">
+  <app-detail-card
       [title]="buildCardTitle(person)"
       [subtitle]="'@' + person.personType"
       [showButton]="true"
@@ -11,5 +10,4 @@
         <p>Updated on {{ person.modifiedDate | date:'dd/MM/yyyy' }}</p>
       </mat-card-content>
     </app-detail-card>
-  </div>
-</div>
+</ng-container>

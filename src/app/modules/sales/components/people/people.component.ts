@@ -17,7 +17,7 @@ import { PeopleActions } from '../../store/actions';
 export class PeopleComponent implements OnInit {
   @CombineSubscriptions() subscriber?: Unsubscribable;
    pageNumber: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 4;
   orderBy: string = 'asc';
   people: PersonDto[] = [];
   person: PersonDto | null | undefined;
