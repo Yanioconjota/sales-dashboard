@@ -19,4 +19,8 @@ export class PersonComponent implements OnInit {
     return `${person.title || ''} ${person.firstName} ${person.middleName || ''} ${person.lastName} ${person.suffix || ''}`;
   }
 
+  editPerson(): void {
+    console.log('Edit button clicked');
+  }
+
 }

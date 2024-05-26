@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationService } from '../../services/navigation.service';
 
 @Component({
@@ -14,11 +14,12 @@ export class DetailCardComponent implements OnInit {
   @Input() showContentImage? = false;
   @Input() content? = 'Card Content';
   @Input() altImageText? = 'Card Image';
-  @Input() showButton? = true;
+  @Input() showButton? = false;
+  @Input() customButtonText = 'Custom Action';
   @Input() buttonText1? = 'Back';
-  @Input() buttonText2? = '';
   @Input() isNavigation? = true;
   @Input() navigateToRoute = '/';
+  @Output() onCustomAction = new EventEmitter<void>();
   constructor(private readonly navigationService: NavigationService) { }
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class DetailCardComponent implements OnInit {
 
   navigateTo(route: string): void {
     this.navigationService.navigateTo(route);
+  }
+
+  emitCustomAction(): void {
+    this.onCustomAction.emit();
   }
 
 }

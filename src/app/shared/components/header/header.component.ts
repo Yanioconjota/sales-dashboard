@@ -53,12 +53,10 @@ export class HeaderComponent implements OnInit {
   }
 
   setupSubscription(): void {
-    this.subscriber = this.auth.isAuthenticated().subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated;
-    });
 
     this.subscriber = combineLatest([this.store.select(AuthSelectors.selectIsAuthenticated), this.store.select(AuthSelectors.selectUserData)]).subscribe(([isAuthenticated, user]) => {
-      console.log(isAuthenticated, user);
+      this.isAuthenticated = isAuthenticated;
+      this.user = user;
     });
   }
 

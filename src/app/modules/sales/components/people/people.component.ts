@@ -31,20 +31,13 @@ export class PeopleComponent implements OnInit {
 
   loadPeople(): void {
     this.store.dispatch(PeopleActions.loadPeople({ pageNumber: this.pageNumber, pageSize: this.pageSize, orderBy: this.orderBy }));
-
-    this.store.dispatch(PeopleActions.loadPerson({ id: 1 }));
   }
 
   setupSubsctiptions(): void {
     this.subscriber = this.store.select(PeopleSelectors.selectPeople).subscribe((people: PersonDto[] | null | undefined) => {
       if (people) {
         this.people = people;
-        console.log(this.people);
       }
-    });
-
-    this.subscriber = this.store.select(PeopleSelectors.selectPerson).subscribe((person: PersonDto | null | undefined) =>  {
-      console.log(person);
     });
   }
 }

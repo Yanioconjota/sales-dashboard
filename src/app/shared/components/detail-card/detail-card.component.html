@@ -6,8 +6,10 @@
   </mat-card-header>
   <img mat-card-image *ngIf="showContentImage" [src]="contentImage" [alt]="altImageText">
   <ng-content></ng-content>
-  <mat-card-actions *ngIf="showButton">
+  <mat-card-actions>
     <button *ngIf="isNavigation" color=primary mat-button (click)="navigateTo(navigateToRoute)">{{ buttonText1 }}</button>
-    <button mat-button>{{ buttonText2 }}</button>
+    <ng-container *ngIf="showButton">
+      <button mat-button (click)="emitCustomAction()">{{ customButtonText }}</button>
+    </ng-container>
   </mat-card-actions>
 </mat-card>

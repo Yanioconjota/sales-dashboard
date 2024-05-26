@@ -8,7 +8,10 @@
       <button mat-button (click)="navigateTo('/')"><mat-icon>{{ icon }}</mat-icon></button>
        {{ title }}
     </div>
-    <button *ngIf="isAuthenticated" mat-button (click)="logout()">logout</button>
-    <button *ngIf="!isAuthenticated" mat-button (click)="loginWithRedirect()">login</button>
+    <div class="sidenav-actions">
+      <h6>{{ user?.name }}</h6>
+      <button *ngIf="isAuthenticated" mat-button (click)="logout()">logout</button>
+      <button *ngIf="!isAuthenticated" mat-button (click)="loginWithRedirect()">login</button>
+    </div>
   </div>
 </mat-toolbar>
