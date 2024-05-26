@@ -20,15 +20,19 @@ export class PeopleComponent implements OnInit {
   pageSize: number = 10;
   orderBy: string = 'asc';
   people: PersonDto[] = [];
+  person: PersonDto | null | undefined;
 
-  constructor(private readonly peopleService: PeopleService, private readonly store: Store<AppState>) { }
+  constructor(private readonly store: Store<AppState>, private ps: PeopleService) { }
 
   ngOnInit(): void {
+    this.loadPeople();
     this.setupSubsctiptions();
   }
 
   loadPeople(): void {
     this.store.dispatch(PeopleActions.loadPeople({ pageNumber: this.pageNumber, pageSize: this.pageSize, orderBy: this.orderBy }));
+
+    this.store.dispatch(PeopleActions.loadPerson({ id: 1 }));
   }
 
   setupSubsctiptions(): void {
@@ -37,6 +41,10 @@ export class PeopleComponent implements OnInit {
         this.people = people;
         console.log(this.people);
       }
-    })
+    });
+
+    this.subscriber = this.store.select(PeopleSelectors.selectPerson).subscribe((person: PersonDto | null | undefined) =>  {
+      console.log(person);
+    });
   }
 }

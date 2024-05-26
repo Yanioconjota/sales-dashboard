@@ -8,16 +8,44 @@ import { PersonDto } from '../models/person.model';
 })
 export class PeopleService {
 
-  private baseUrl: string = 'http://localhost:7000/Person/GetPeople';
+  private baseUrl: string = 'http://localhost:7000/Person';
 
   constructor(private http: HttpClient) { }
 
   getPeople(pageNumber: number = 1, pageSize: number = 10, orderBy: string = 'desc'): Observable<PersonDto[]> {
+    const url = `${this.baseUrl}/GetPeople`;
     let params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString())
       .set('orderBy', orderBy);
 
-    return this.http.get<PersonDto[]>(this.baseUrl, { params: params });
+    return this.http.get<PersonDto[]>(url, { params: params });
+  }
+
+  getPeopleByName(name: string): Observable<PersonDto[]> {
+    const url = `${this.baseUrl}/GetPeopleByName`;
+    let params = new HttpParams().set('name', name);
+    return this.http.get<PersonDto[]>(url, { params });
+  }
+
+  getPersonById(id: number): Observable<PersonDto> {
+    const url = `${this.baseUrl}/GetpersonById`;
+    let params = new HttpParams().set('id', id.toString());
+    return this.http.get<PersonDto>(url, { params: params });
+  }
+
+  addPerson(personDto: PersonDto): Observable<PersonDto> {
+    const url = `${this.baseUrl}/AddPerson`;
+    return this.http.post<PersonDto>(url, personDto);
+  }
+
+  updatePerson(id: number, person: PersonDto): Observable<any> {
+    const url = `${this.baseUrl}/UpdatePerson/${id}`;
+    return this.http.put(url, person);
+  }
+
+  deletePerson(id: number): Observable<any> {
+    const url = `${this.baseUrl}/DeletePerson/${id}`;
+    return this.http.delete(url);
   }
 }

@@ -4,14 +4,6 @@ import { PeopleActions } from "../actions";
 
 export const PeopleReducer = createReducer(
   initialPeopleState,
-  // Load people with pagination and ordering
-  on(PeopleActions.loadPeople, (state, { pageNumber, pageSize, orderBy }) => ({
-    ...state,
-    pageNumber,
-    pageSize,
-    orderBy,
-    error: null
-  })),
 
   // Set the people list
   on(PeopleActions.setPeople, (state, { people }) => ({
@@ -25,4 +17,47 @@ export const PeopleReducer = createReducer(
     ...state,
     error: error
   })),
+
+  // Load a single person by ID
+  on(PeopleActions.setPerson, (state, { person }) => ({
+    ...state,
+    person,
+    error: null
+  })),
+
+  // Load a people by name
+  on(PeopleActions.setPeopleByName, (state, { people }) => ({
+    ...state,
+    people,
+    error: null
+  })),
+
+  on(PeopleActions.updatePersonSuccess, (state, { person }) => {
+    const updatedPeople = state.people ? state.people.map(p => {
+      if (p.businessEntityId === person.businessEntityId) {
+        return person; // Replace the person with the updated one
+      }
+      return p; // Return unchanged person
+    }) : null;
+
+    return {
+      ...state,
+      person,
+      people: updatedPeople, // Update the people list
+      error: null
+    };
+  }),
+
+
+  on(PeopleActions.addPersonSuccess, (state, { person }) => ({
+    ...state,
+    person,
+    error: null
+  })),
+
+  on(PeopleActions.deletePersonSuccess, (state, { id }) => ({
+    ...state,
+    people: state.people?.filter(p => p.businessEntityId !== id),
+    error: null
+  }))
 );
