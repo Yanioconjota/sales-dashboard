@@ -7,12 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { AuthorizationRoutingModule } from './authorization-routing.module';
 import { AuthModule } from '@auth0/auth0-angular';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { UserComponent } from './components/user/user.component';
-import { AuthorizationRoutingModule } from './authorization-routing.module';
+import { RegisterComponent } from './components/register/register.component';
 
 const imports = [
   CommonModule,
@@ -22,6 +23,7 @@ const imports = [
   MatDividerModule,
   MatFormFieldModule,
   MatInputModule,
+  SharedModule,
   MatProgressBarModule,
   AuthModule.forRoot({
     domain:  process.env.AUTH0_ISSUER_BASE_URL || '',
