@@ -1,1 +1,12 @@
-<p>person works!</p>
+<div class="main-wrapper" *ngIf="person">
+  <div class="col-12 padding-1">
+    <app-detail-card
+      [title]="buildCardTitle(person)"
+      [subtitle]="'@' + person.personType">
+      <mat-card-content>
+        <p>Unique Identifier: {{ person.rowguid }}</p>
+        <p>Updated on {{ person.modifiedDate | date:'dd/MM/yyyy' }}</p>
+      </mat-card-content>
+    </app-detail-card>
+  </div>
+</div>

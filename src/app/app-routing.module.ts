@@ -6,8 +6,8 @@ import { UserComponent } from './modules/authorization/components/user/user.comp
 import { PeopleComponent } from './modules/sales/components/people/people.component';
 
 const routes: Routes = [
-  // { path: '', component: LandingComponent },
-  { path: '', component: PeopleComponent },
+  //{ path: '', component: LandingComponent },
+  { path: '', redirectTo: '/sales/people', pathMatch: 'full' },
   { path: 'callback', component: CallbackComponent },
   { path: 'user', loadChildren: () => import('./modules/authorization/authorization.module').then(m => m.AuthorizationModule) },
   { path: 'sales', loadChildren: () => import('./modules/sales/sales.module').then(m => m.SalesModule)},

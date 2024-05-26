@@ -7,9 +7,11 @@ import { PeopleComponent } from './components/people/people.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { PeopleEffects } from './store/effects';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const imports = [
   CommonModule,
+  SharedModule,
   HttpClientModule,
   SalesRoutingModule,
   EffectsModule.forFeature([PeopleEffects])
