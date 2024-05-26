@@ -1,15 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SalesGuard } from './services/sales.guard';
-import { DemoComponent } from './components/demo/demo.component';
+import { SalesComponent } from './components/sales/sales.component';
+import { PersonComponent } from './components/person/person.component';
+import { PeopleComponent } from './components/people/people.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DemoComponent,
+    component: SalesComponent,
     canActivate: [SalesGuard],
     //resolve: { user: UserResolver }
-  }
+  },
+  {
+    path: 'people',
+    component: PeopleComponent,
+    canActivate: [SalesGuard]
+  },
+  {
+    path: 'person/:id',
+    component: PersonComponent,
+    canActivate: [SalesGuard]
+  },
 ];
 
 

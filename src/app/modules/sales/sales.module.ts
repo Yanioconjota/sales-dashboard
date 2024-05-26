@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoComponent } from './components/demo/demo.component';
+import { SalesComponent } from './components/sales/sales.component';
 import { SalesRoutingModule } from './sales-routing.module';
+import { PersonComponent } from './components/person/person.component';
+import { PeopleComponent } from './components/people/people.component';
 
 const imports = [
   CommonModule,
@@ -9,7 +11,9 @@ const imports = [
 ];
 
 const components = [
-  DemoComponent
+  SalesComponent,
+  PeopleComponent,
+  PersonComponent
 ];
 
 @NgModule({
