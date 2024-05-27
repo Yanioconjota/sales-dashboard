@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers/index.reducer';
 import { PeopleSelectors } from '../../store/selectors';
 import { PeopleActions } from '../../store/actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -22,11 +23,16 @@ export class PeopleComponent implements OnInit {
   people: PersonDto[] = [];
   person: PersonDto | null | undefined;
 
-  constructor(private readonly store: Store<AppState>) { }
+  constructor(private readonly store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadPeople();
+    //this.loadPeople();
     this.setupSubsctiptions();
+    console.log('object');
+    this.activatedRoute.data.subscribe(data => {
+      console.log(data);
+      this.people = data.people;
+    });
   }
 
   loadPeople(): void {
@@ -34,10 +40,12 @@ export class PeopleComponent implements OnInit {
   }
 
   setupSubsctiptions(): void {
-    this.subscriber = this.store.select(PeopleSelectors.selectPeople).subscribe((people: PersonDto[] | null | undefined) => {
-      if (people) {
-        this.people = people;
-      }
-    });
+    // this.subscriber = this.store.select(PeopleSelectors.selectPeople).subscribe((people: PersonDto[] | null | undefined) => {
+    //   if (people) {
+    //     this.people = people;
+    //   }
+    // });
+
+
   }
 }
