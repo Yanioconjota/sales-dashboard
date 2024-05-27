@@ -52,4 +52,9 @@ export class PeopleComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.loadPeople();
   }
+
+  orderByChange(orderBy: string): void {
+    this.orderBy = orderBy;
+    this.loadPeople();
+  }
 }

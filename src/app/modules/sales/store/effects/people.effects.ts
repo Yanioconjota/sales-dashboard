@@ -55,8 +55,8 @@ export class PeopleEffects {
   updatePerson$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PeopleActions.updatePerson),
-      mergeMap(({ person }) =>
-        this.peopleService.updatePerson(person.businessEntityId, person).pipe(
+      mergeMap(({ id, person }) =>
+        this.peopleService.updatePerson(id, person).pipe(
           map(() =>
             PeopleActions.updatePersonSuccess({ person })
           ),

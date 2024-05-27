@@ -44,17 +44,6 @@ export class AddEditDialogComponent implements OnInit {
         lastName: this.form.get('lastName')?.value,
         suffix: this.form.get('suffix')?.value,
         emailPromotion: +this.form.get('emailPromotion')?.value,
-        additionalContactInfo: null,
-        demographics: this.data.demographics,
-        rowguid: this.data.rowguid,
-        modifiedDate: new Date().toISOString(),
-        businessEntity: null,
-        businessEntityContacts: [],
-        customers: [],
-        emailAddresses: [],
-        password: null,
-        personCreditCards: [],
-        personPhones: []
       });
       this.dialogRef.close(personToUpdate);
     }
