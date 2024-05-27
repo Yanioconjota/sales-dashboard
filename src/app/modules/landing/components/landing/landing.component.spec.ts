@@ -11,9 +11,7 @@ describe('LandingComponent', () => {
       declarations: [ LandingComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LandingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
