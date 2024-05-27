@@ -5,6 +5,7 @@ import { AddEditDialogComponent } from '../add-edit-dialog/add-edit-dialog.compo
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers/index.reducer';
 import { PeopleActions } from '../../store/actions';
+import { PeopleService } from '../../services/people.service';
 
 @Component({
   selector: 'app-person',
@@ -15,7 +16,7 @@ export class PersonComponent implements OnInit {
 
   @Input() person: PersonDto | null | undefined;
 
-  constructor(public dialog: MatDialog, private readonly store: Store<AppState>) { }
+  constructor(public dialog: MatDialog, private readonly store: Store<AppState>, private readonly ps: PeopleService) { }
 
   ngOnInit(): void {
   }
@@ -33,7 +34,8 @@ export class PersonComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const updatedPerson = new PersonDto({...result});
-        this.store.dispatch(PeopleActions.updatePerson({ person: updatedPerson }));
+        //this.ps.updatePersonAlt(updatedPerson.businessEntityId, updatedPerson);
+        this.store.dispatch(PeopleActions.updatePerson({ id: updatedPerson.businessEntityId, person: updatedPerson }));
       }
     });
   }

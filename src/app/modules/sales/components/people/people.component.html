@@ -1,4 +1,11 @@
 <div class="row">
+  <div class="col-12 padding-1 action-toggle">
+    <p>Order by</p>
+    <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+      <mat-button-toggle (click)="orderByChange('asc')" >ASC</mat-button-toggle>
+      <mat-button-toggle (click)="orderByChange('desc')">DESC</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <div class="col-md-6 col-12 padding-1" *ngFor="let person of people">
     <app-person [person]="person"></app-person>
   </div>

@@ -44,6 +44,12 @@ export class PeopleService {
     return this.http.put(url, person, { params: { id: id.toString() } });
   }
 
+  updatePersonAlt(id: number, person: PersonDto): any {
+    const url = `${this.baseUrl}/UpdatePerson`;
+    console.log(id, person);
+    return this.http.put(url, person, { params: { id: id.toString() } });
+  }
+
   deletePerson(id: number): Observable<any> {
     const url = `${this.baseUrl}/DeletePerson/${id}`;
     return this.http.delete(url);

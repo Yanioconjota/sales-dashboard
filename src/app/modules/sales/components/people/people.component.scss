@@ -1,0 +1,12 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.action-toggle {
+  @include flexbox();
+  @include align-items(center);
+  p {
+    margin-bottom: 0;
+    margin-right: 1rem;
+    text-transform: uppercase;
+  }
+}
