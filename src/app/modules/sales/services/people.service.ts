@@ -40,8 +40,8 @@ export class PeopleService {
   }
 
   updatePerson(id: number, person: PersonDto): Observable<any> {
-    const url = `${this.baseUrl}/UpdatePerson/${id}`;
-    return this.http.put(url, person);
+    const url = `${this.baseUrl}/UpdatePerson`;
+    return this.http.put(url, person, { params: { id: id.toString() } });
   }
 
   deletePerson(id: number): Observable<any> {

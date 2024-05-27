@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PersonDto } from '../../models/person.model';
+import { IPersonDto, PersonDto } from '../../models/person.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditDialogComponent } from '../add-edit-dialog/add-edit-dialog.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers/index.reducer';
+import { PeopleActions } from '../../store/actions';
 
 @Component({
   selector: 'app-person',
@@ -12,7 +15,7 @@ export class PersonComponent implements OnInit {
 
   @Input() person: PersonDto | null | undefined;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private readonly store: Store<AppState>) { }
 
   ngOnInit(): void {
   }
@@ -22,14 +25,16 @@ export class PersonComponent implements OnInit {
   }
 
   editPerson(): void {
-    console.log('Edit button clicked');
     const dialogRef = this.dialog.open(AddEditDialogComponent, {
       width: '600px',
-      data: this.person
+      data: new PersonDto(this.person as IPersonDto)
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      if (result) {
+        const updatedPerson = new PersonDto({...result});
+        this.store.dispatch(PeopleActions.updatePerson({ person: updatedPerson }));
+      }
     });
   }
 

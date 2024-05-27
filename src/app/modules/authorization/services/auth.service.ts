@@ -21,7 +21,6 @@ export class AuthService {
   handleCallback(): void {
     this.auth.handleRedirectCallback().subscribe({
       next: (result) => {
-        console.log('Redirect success', result);
         this.router.navigate(['/']);
       },
       error: (error) => {

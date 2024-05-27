@@ -22,7 +22,7 @@ export class PeopleComponent implements OnInit {
   people: PersonDto[] = [];
   person: PersonDto | null | undefined;
 
-  constructor(private readonly store: Store<AppState>, private ps: PeopleService) { }
+  constructor(private readonly store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.loadPeople();

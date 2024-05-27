@@ -36,7 +36,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   }
 
   navigateTo(route: string): void {
-    console.log(route);
     this.navigationService.navigateTo(route);
   }
 

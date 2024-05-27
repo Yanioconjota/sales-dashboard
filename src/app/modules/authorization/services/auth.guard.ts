@@ -21,7 +21,6 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(isAuthenticated => {
         if (!isAuthenticated && state.url !== '/') {
-          console.log('User is not authenticated');
           return this.router.parseUrl('/');
         }
         return true;

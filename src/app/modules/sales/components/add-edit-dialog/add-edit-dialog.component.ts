@@ -30,12 +30,33 @@ export class AddEditDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
   onSave(): void {
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+      const personToUpdate = new PersonDto({
+        businessEntityId: this.data.businessEntityId,
+        personType: this.form.get('personType')?.value,
+        nameStyle: Boolean(this.form.get('nameStyle')?.value),
+        title: this.form.get('title')?.value,
+        firstName: this.form.get('firstName')?.value,
+        middleName: this.form.get('middleName')?.value,
+        lastName: this.form.get('lastName')?.value,
+        suffix: this.form.get('suffix')?.value,
+        emailPromotion: +this.form.get('emailPromotion')?.value,
+        additionalContactInfo: null,
+        demographics: this.data.demographics,
+        rowguid: this.data.rowguid,
+        modifiedDate: new Date().toISOString(),
+        businessEntity: null,
+        businessEntityContacts: [],
+        customers: [],
+        emailAddresses: [],
+        password: null,
+        personCreditCards: [],
+        personPhones: []
+      });
+      this.dialogRef.close(personToUpdate);
     }
   }
 
