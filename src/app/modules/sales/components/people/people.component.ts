@@ -26,26 +26,12 @@ export class PeopleComponent implements OnInit {
   constructor(private readonly store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.loadPeople();
     this.setupSubsctiptions();
-    console.log('object');
-    this.activatedRoute.data.subscribe(data => {
-      console.log(data);
-      this.people = data.people;
-    });
-  }
-
-  loadPeople(): void {
-    this.store.dispatch(PeopleActions.loadPeople({ pageNumber: this.pageNumber, pageSize: this.pageSize, orderBy: this.orderBy }));
   }
 
   setupSubsctiptions(): void {
-    // this.subscriber = this.store.select(PeopleSelectors.selectPeople).subscribe((people: PersonDto[] | null | undefined) => {
-    //   if (people) {
-    //     this.people = people;
-    //   }
-    // });
-
-
+    this.activatedRoute.data.subscribe(data => {
+      this.people = data.people;
+    });
   }
 }
