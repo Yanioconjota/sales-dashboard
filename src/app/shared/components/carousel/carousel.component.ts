@@ -49,7 +49,6 @@ export class CarouselComponent implements OnInit {
   }
 
   startAutoplay(): void {
-    console.log('startAutoplay');
     this.autoplay = true;
     this.autoplayInterval = setInterval(() => {
       this.nextSlide();
@@ -57,7 +56,6 @@ export class CarouselComponent implements OnInit {
   }
 
   stopAutoplay(): void {
-    console.log('stopAutoplay');
     this.autoplay = false;
     if (this.autoplayInterval) {
       clearInterval(this.autoplayInterval);

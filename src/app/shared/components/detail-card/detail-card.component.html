@@ -1,0 +1,15 @@
+<mat-card class="detail-card">
+  <mat-card-header>
+    <div [ngStyle]="{'background-image': 'url(' + contentImage + ')'}" mat-card-avatar class="detail-card-header-image"></div>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image *ngIf="showContentImage" [src]="contentImage" [alt]="altImageText">
+  <ng-content></ng-content>
+  <mat-card-actions>
+    <button *ngIf="isNavigation" color=primary mat-button (click)="navigateTo(navigateToRoute)">{{ buttonText1 }}</button>
+    <ng-container *ngIf="showButton">
+      <button mat-button (click)="emitCustomAction()">{{ customButtonText }}</button>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

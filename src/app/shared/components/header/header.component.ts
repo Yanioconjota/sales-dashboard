@@ -3,7 +3,12 @@ import { DrawerService } from '../../services/drawer.service';
 import { NavigationService } from '../../services/navigation.service';
 import { AuthService } from 'src/app/modules/authorization/services/auth.service';
 import { CombineSubscriptions, DestroySubscribers } from '../../decorators/destroy-subscribers.decorator';
-import { Unsubscribable } from 'rxjs';
+import { Unsubscribable, combineLatest } from 'rxjs';
+import { User } from '@auth0/auth0-angular';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers/index.reducer';
+import * as AuthActions from 'src/app/modules/authorization/store/actions/auth.actions';
+import * as AuthSelectors from 'src/app/modules/authorization/store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -17,13 +22,17 @@ export class HeaderComponent implements OnInit {
   @Input() theme: string = '';
   @Input() icon: string = '';
   isAuthenticated = false;
+  user: User | null | undefined;
 
   constructor(
     private drawerService: DrawerService,
     private readonly navigationService: NavigationService,
-    private readonly auth: AuthService) { }
+    private readonly auth: AuthService,
+    private readonly store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(AuthActions.checkAuthentication());
+    this.store.dispatch(AuthActions.loadUserData());
     this.setupSubscription();
   }
 
@@ -44,8 +53,10 @@ export class HeaderComponent implements OnInit {
   }
 
   setupSubscription(): void {
-    this.subscriber = this.auth.isAuthenticated().subscribe(isAuthenticated => {
+
+    this.subscriber = combineLatest([this.store.select(AuthSelectors.selectIsAuthenticated), this.store.select(AuthSelectors.selectUserData)]).subscribe(([isAuthenticated, user]) => {
       this.isAuthenticated = isAuthenticated;
+      this.user = user;
     });
   }
 

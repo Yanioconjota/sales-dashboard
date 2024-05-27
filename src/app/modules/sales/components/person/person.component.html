@@ -1,0 +1,13 @@
+<ng-container *ngIf="person">
+  <app-detail-card
+      [title]="buildCardTitle(person)"
+      [subtitle]="'@' + person.personType"
+      [showButton]="true"
+      [customButtonText]="'Edit'"
+      (onCustomAction)="editPerson()">
+      <mat-card-content>
+        <p>Unique Identifier: {{ person.rowguid }}</p>
+        <p>Updated on {{ person.modifiedDate | date:'dd/MM/yyyy' }}</p>
+      </mat-card-content>
+    </app-detail-card>
+</ng-container>

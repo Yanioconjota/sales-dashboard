@@ -21,5 +21,15 @@
         margin-right: var(--default-spacing);
       }
     }
+    .sidenav-actions {
+      h6 {
+        font-size: 70%;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+      }
+      @include flexbox();
+      @include align-items(center);
+    }
   }
 }
