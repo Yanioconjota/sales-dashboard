@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 //Directives
 
@@ -37,7 +38,8 @@ const imports = [
   MatListModule,
   MatButtonToggleModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatPaginatorModule
 ];
 
 const components = [

@@ -3,3 +3,9 @@
     <app-person [person]="person"></app-person>
   </div>
 </div>
+
+<mat-paginator [length]="length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[4, 8, 16]"
+  (page)="onPageChange($event)">
+</mat-paginator>
